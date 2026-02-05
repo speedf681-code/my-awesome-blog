@@ -1,9 +1,10 @@
 // 1. LOAD: Try to get posts from LocalStorage, or use defaults if empty
 let blogPosts = JSON.parse(localStorage.getItem('myBlogPosts')) || [
     {
-        title: "Welcome to my Persistent Blog",
-        date: "Feb 4, 2026",
-        excerpt: "This post is here by default, but once you add your own, they will stay saved!",
+        title: "Exploring the Digital Garden",
+        date: "Feb 5, 2026",
+        excerpt: "Why building your own site is the best way to learn.",
+        image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c", // Example Unsplash link
         link: "#"
     }
 ];
@@ -16,10 +17,13 @@ function renderPosts() {
     blogPosts.forEach(post => {
         const postHTML = `
             <article class="post">
-                <h2>${post.title}</h2>
-                <span class="date">${post.date}</span>
-                <p>${post.excerpt}</p>
-                <a href="${post.link}" class="read-more">Read More</a>
+                <img src="${post.image}" alt="${post.title}" class="post-image">
+                <div class="post-content">
+                    <h2>${post.title}</h2>
+                    <span class="date">${post.date}</span>
+                    <p>${post.excerpt}</p>
+                    <a href="${post.link}" class="read-more">Read More</a>
+                </div>
             </article>
         `;
         container.innerHTML += postHTML;
